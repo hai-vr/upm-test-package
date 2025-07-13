@@ -1,8 +1,9 @@
 {
     "name" : "dev.hai-vr.test.upm-test-complex-semver",
     "version" : "1.0.0+21AF26D3----117B344092BD",
-    "description": "Complex valid Semver, where 1.0.0 is the core, and 21AF26D3----117B344092BD is the build metadata. This is NOT considered to be a pre-release",
+    "description": "Complex valid Semver, where 1.0.0 is the core, and 21AF26D3----117B344092BD is the build metadata. This is NOT considered to be a pre-release.",
     "displayName" : "Complex Semantic Versioning",
     "unity" : "2022.3",
-    "author" : "Haï~"
+    "author" : "Haï~",
+    "documentationUrl" : "https://semver.org/#semantic-versioning-200:~:text=1.0.0%2B21AF26D3%2D%2D%2D%2D117B344092BD"
 }
