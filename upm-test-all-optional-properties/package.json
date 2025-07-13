@@ -1,0 +1,38 @@
+{
+    "name" : "dev.hai-vr.test.upm-test-all-optional-properties",
+    "version" : "1.0.0",
+    "description" : "A brief description of the package. This field supports UTF–8 character codes.\n\u25AAThis is the second line.\n▪This is the third line.",
+    "displayName" : "User-friendly name that appears in the Unity Editor",
+    "unity" : "6000.1",
+    "author" : {
+        "name" : "Haï~",
+        "email" : "hai-vr@users.noreply.github.com",
+        "url" : "https://github.com/hai-vr/"
+    },
+    "changelogUrl" : "https://docs.hai-vr.dev/docs/changelogs",
+    "dependencies" : {
+        "com.unity.nuget.newtonsoft-json": "2.0.0",
+        "com.unity.burst": "1.6.6"
+    },
+    "documentationUrl" : "https://docs.hai-vr.dev/docs/products",
+    "hideInEditor" : true,
+    "keywords" : [
+        "test",
+        "urp"
+    ],
+    "license": "MIT",
+    "licensesUrl" : "https://github.com/hai-vr/upm-test-package",
+    "samples": [
+        {
+            "displayName": "Example prefabs",
+            "description": "A set of example prefabs",
+            "path": "Prefabs/ExamplePrefabs"
+        },
+        {
+            "displayName": "Example scene",
+            "description": "An example scene",
+            "path": "Samples/ExampleScene"
+        }
+    ],
+    "unityRelease" : "6f1"
+}

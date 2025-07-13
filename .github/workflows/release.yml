@@ -5,6 +5,7 @@ on:
 
 env:
   package0name: "upm-test-required-only"
+  package1name: "upm-test-all-optional-properties"
 
 permissions:
   contents: write
@@ -24,9 +25,17 @@ jobs:
             path: "${{env.package0name}}/package.json"
             prop_path: "version"
     
+      - name: Get package1 version
+        id: package1version
+        uses: notiz-dev/github-action-json-property@7c8cf5cc36eb85d8d287a8086a39dac59628eb31
+        with: 
+            path: "${{env.package1name}}/package.json"
+            prop_path: "version"
+    
       - name: Set Environment Variables
         run: |
           echo "package0zip=${{ env.package0name }}-${{ steps.package0version.outputs.prop }}".zip >> $GITHUB_ENV
+          echo "package0zip=${{ env.package1name }}-${{ steps.package1version.outputs.prop }}".zip >> $GITHUB_ENV
         
       - name: Create Zip
         uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
@@ -34,6 +43,13 @@ jobs:
           type: "zip"
           directory: "${{env.package0name}}/"
           filename: "../${{env.package0zip}}" # make the zip file one directory up, since we start one directory in above
+        
+      - name: Create Zip
+        uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
+        with:
+          type: "zip"
+          directory: "${{env.package1name}}/"
+          filename: "../${{env.package1zip}}
           
       - name: Make Release
         uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5
@@ -41,3 +57,4 @@ jobs:
           tag_name: ${{ steps.package0version.outputs.prop }}
           files: |
             ${{ env.package0zip }}
+            ${{ env.package1zip }}
