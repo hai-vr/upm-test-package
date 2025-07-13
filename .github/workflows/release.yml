@@ -6,7 +6,7 @@ on:
 env:
   package0name: "upm-test-required-only"
   package1name: "upm-test-all-optional-properties"
-  package2name: "upm-test-upm-test-partial-objects"
+  package2name: "upm-test-partial-objects"
 
 permissions:
   contents: write
