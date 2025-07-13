@@ -1,0 +1,11 @@
+{
+    "name" : "dev.hai-vr.test.upm-test-partial-objects",
+    "version" : "1.0.0",
+    "description" : "",
+    "author" : {
+        "name" : "Haï~"
+    },
+    "dependencies" : {},
+    "keywords" : [],
+    "samples": []
+}
