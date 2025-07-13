@@ -5,9 +5,15 @@ on:
 
 env:
   package0name: "upm-test-required-only"
+  package0dir: "upm-test-required-only"
   package1name: "upm-test-all-optional-properties"
+  package1dir: "upm-test-all-optional-properties"
   package2name: "upm-test-partial-objects"
+  package2dir: "upm-test-partial-objects"
   package3name: "upm-test-complex-semver"
+  package3dir: "upm-test-complex-semver-1"
+  package4name: "upm-test-complex-semver"
+  package4dir: "upm-test-complex-semver-2"
 
 permissions:
   contents: write
@@ -48,40 +54,55 @@ jobs:
             path: "${{env.package3name}}/package.json"
             prop_path: "version"
     
+      - name: Get package4 version
+        id: package4version
+        uses: notiz-dev/github-action-json-property@7c8cf5cc36eb85d8d287a8086a39dac59628eb31
+        with: 
+            path: "${{env.package4name}}/package.json"
+            prop_path: "version"
+    
       - name: Set Environment Variables
         run: |
           echo "package0zip=${{ env.package0name }}-${{ steps.package0version.outputs.prop }}".zip >> $GITHUB_ENV
           echo "package1zip=${{ env.package1name }}-${{ steps.package1version.outputs.prop }}".zip >> $GITHUB_ENV
           echo "package2zip=${{ env.package2name }}-${{ steps.package2version.outputs.prop }}".zip >> $GITHUB_ENV
           echo "package3zip=${{ env.package3name }}-${{ steps.package3version.outputs.prop }}".zip >> $GITHUB_ENV
+          echo "package4zip=${{ env.package4name }}-${{ steps.package4version.outputs.prop }}".zip >> $GITHUB_ENV
         
       - name: Create Zip
         uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
         with:
           type: "zip"
-          directory: "${{env.package0name}}/"
+          directory: "${{env.package0dir}}/"
           filename: "../${{env.package0zip}}" # make the zip file one directory up, since we start one directory in above
         
       - name: Create Zip
         uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
         with:
           type: "zip"
-          directory: "${{env.package1name}}/"
+          directory: "${{env.package1dir}}/"
           filename: "../${{env.package1zip}}"
         
       - name: Create Zip
         uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
         with:
           type: "zip"
-          directory: "${{env.package2name}}/"
+          directory: "${{env.package2dir}}/"
           filename: "../${{env.package2zip}}"
         
       - name: Create Zip
         uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
         with:
           type: "zip"
-          directory: "${{env.package3name}}/"
+          directory: "${{env.package3dir}}/"
           filename: "../${{env.package3zip}}"
+        
+      - name: Create Zip
+        uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
+        with:
+          type: "zip"
+          directory: "${{env.package4dir}}/"
+          filename: "../${{env.package4zip}}"
           
       - name: Make Release
         uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5
@@ -92,3 +113,4 @@ jobs:
             ${{ env.package1zip }}
             ${{ env.package2zip }}
             ${{ env.package3zip }}
+            ${{ env.package4zip }}
