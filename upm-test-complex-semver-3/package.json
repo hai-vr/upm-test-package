@@ -1,0 +1,9 @@
+{
+    "name" : "dev.hai-vr.test.upm-test-complex-semver",
+    "version" : "1.0.0-x-y-z.--",
+    "description": "Complex valid Semver, where 1.0.0 is the core, and x-y-z.-- is the pre-release. Yes, the pre-release ends with hyphens.",
+    "displayName" : "Complex Semantic Versioning",
+    "unity" : "2022.3",
+    "author" : "Haï~",
+    "documentationUrl" : "https://semver.org/#semantic-versioning-200:~:text=7.z.92%2C-,1.0.0%2Dx%2Dy%2Dz.%2D%2D,-."
+}
