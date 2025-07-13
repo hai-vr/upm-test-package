@@ -7,6 +7,7 @@ env:
   package0name: "upm-test-required-only"
   package1name: "upm-test-all-optional-properties"
   package2name: "upm-test-partial-objects"
+  package3name: "upm-test-complex-semver"
 
 permissions:
   contents: write
@@ -40,11 +41,19 @@ jobs:
             path: "${{env.package2name}}/package.json"
             prop_path: "version"
     
+      - name: Get package3 version
+        id: package3version
+        uses: notiz-dev/github-action-json-property@7c8cf5cc36eb85d8d287a8086a39dac59628eb31
+        with: 
+            path: "${{env.package3name}}/package.json"
+            prop_path: "version"
+    
       - name: Set Environment Variables
         run: |
           echo "package0zip=${{ env.package0name }}-${{ steps.package0version.outputs.prop }}".zip >> $GITHUB_ENV
           echo "package1zip=${{ env.package1name }}-${{ steps.package1version.outputs.prop }}".zip >> $GITHUB_ENV
           echo "package2zip=${{ env.package2name }}-${{ steps.package2version.outputs.prop }}".zip >> $GITHUB_ENV
+          echo "package3zip=${{ env.package3name }}-${{ steps.package3version.outputs.prop }}".zip >> $GITHUB_ENV
         
       - name: Create Zip
         uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
@@ -66,6 +75,13 @@ jobs:
           type: "zip"
           directory: "${{env.package2name}}/"
           filename: "../${{env.package2zip}}"
+        
+      - name: Create Zip
+        uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
+        with:
+          type: "zip"
+          directory: "${{env.package3name}}/"
+          filename: "../${{env.package3zip}}"
           
       - name: Make Release
         uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5
@@ -75,3 +91,4 @@ jobs:
             ${{ env.package0zip }}
             ${{ env.package1zip }}
             ${{ env.package2zip }}
+            ${{ env.package3zip }}

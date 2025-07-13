@@ -1,0 +1,8 @@
+{
+    "name" : "dev.hai-vr.test.upm-test-complex-semver",
+    "version" : "999999.999999.999999-alpha.0.0-preview.abcdef+build.20250713.sha.abcdef1234567890abcdef",
+    "description": "Complex valid Semver, where 999999.999999.999999 is the core, alpha.0.0-preview.abcdef is the pre-release, and build.20250713.sha.abcdef1234567890abcdef is the build metadata",
+    "displayName" : "Complex Semantic Versioning",
+    "unity" : "2022.3",
+    "author" : "Haï~"
+}
