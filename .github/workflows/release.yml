@@ -49,7 +49,7 @@ jobs:
         with:
           type: "zip"
           directory: "${{env.package1name}}/"
-          filename: "../${{env.package1zip}}
+          filename: "../${{env.package1zip}}"
           
       - name: Make Release
         uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5
