@@ -1,0 +1,11 @@
+{
+    "name" : "dev.hai-vr.test.upm-test-offspec-alcom",
+    "version" : "1.0.0",
+    "documentationUrl" : "https://github.com/vrc-get/vrc-get/issues/1865",
+    "vrc-get": {
+        "requiredExtensions": ["NugetDependencies"],
+        "nugetDependencies": {
+            "System.Collections.Immutable": "7.0.0"
+        }
+    }
+}

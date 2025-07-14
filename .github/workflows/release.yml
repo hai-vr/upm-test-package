@@ -16,6 +16,8 @@ env:
   package4dir: "upm-test-complex-semver-2"
   package5name: "upm-test-complex-semver"
   package5dir: "upm-test-complex-semver-3"
+  package6name: "upm-test-offspec-alcom"
+  package6dir: "upm-test-offspec-alcom"
 
 permissions:
   contents: write
@@ -70,6 +72,13 @@ jobs:
             path: "${{env.package5dir}}/package.json"
             prop_path: "version"
     
+      - name: Get package6 version
+        id: package6version
+        uses: notiz-dev/github-action-json-property@7c8cf5cc36eb85d8d287a8086a39dac59628eb31
+        with: 
+            path: "${{env.package6dir}}/package.json"
+            prop_path: "version"
+    
       - name: Set Environment Variables
         run: |
           echo "package0zip=${{ env.package0name }}-${{ steps.package0version.outputs.prop }}".zip >> $GITHUB_ENV
@@ -78,6 +87,7 @@ jobs:
           echo "package3zip=${{ env.package3name }}-${{ steps.package3version.outputs.prop }}".zip >> $GITHUB_ENV
           echo "package4zip=${{ env.package4name }}-${{ steps.package4version.outputs.prop }}".zip >> $GITHUB_ENV
           echo "package5zip=${{ env.package5name }}-${{ steps.package5version.outputs.prop }}".zip >> $GITHUB_ENV
+          echo "package6zip=${{ env.package6name }}-${{ steps.package6version.outputs.prop }}".zip >> $GITHUB_ENV
         
       - name: Create Zip
         uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
@@ -120,6 +130,13 @@ jobs:
           type: "zip"
           directory: "${{env.package5dir}}/"
           filename: "../${{env.package5zip}}"
+        
+      - name: Create Zip
+        uses: thedoctor0/zip-release@09336613be18a8208dfa66bd57efafd9e2685657
+        with:
+          type: "zip"
+          directory: "${{env.package6dir}}/"
+          filename: "../${{env.package6zip}}"
           
       - name: Make Release
         uses: softprops/action-gh-release@1e07f4398721186383de40550babbdf2b84acfc5
@@ -132,3 +149,4 @@ jobs:
             ${{ env.package3zip }}
             ${{ env.package4zip }}
             ${{ env.package5zip }}
+            ${{ env.package6zip }}
